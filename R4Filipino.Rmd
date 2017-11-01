@@ -71,23 +71,38 @@ Yes.
 ## Why use Rstudio with R?
 
 ```{r, out.width=900, fig.width=5, fig.height=3, echo=FALSE, eval=TRUE}
-knitr::include_graphics("Rmarkdown.png")
+knitr::include_graphics("./img/Rmarkdown.png")
 ```
 
 
-## Importing Data into R is easy and can be done in many ways
+## Let's load the required packages first
 
 ```{r}
 library(tidyverse)
+library(agricolae)
 ```
+
+
 
 ## Introducing the `mtcars data set`
 
 ```{r}
 ?mtcars
 write.csv(mtcars, "mtcars.csv")
-mtcars2 <- read.csv("mtcars.csv")
 ```
+
+## Using different ways to load data set into R
+
+* Using the R console
+
+```{r, message=FALSE, warning=FALSE}
+mt1 <- read.table("mtcars.csv", sep = ",", header=TRUE)
+mtcars2 <- read.csv("mtcars.csv")
+mt3 <- read_csv("mtcars.csv")
+mt4 <- data.table::fread("mtcars.csv")
+```
+
+* From Rstudio, click `File > Import Dataset`.
 
 ## Linear Model for comparing the means of two groups
 
@@ -182,7 +197,7 @@ boxplot(mpg~amf, data=mtcars2,
 
 ## Changing the range of values in the $y$-axis
 
-Let us put some labels for the levels of `am`.
+Let us start the boxplot at 0.
 
 ```{r}
 boxplot(mpg~amf, data=mtcars2, 
@@ -195,8 +210,14 @@ boxplot(mpg~amf, data=mtcars2,
 ## Plotting with `ggplot2`
 
 ```{r}
-ggplot(mtcars2, aes(x = amf, y = mpg)) + geom_boxplot()
+ggplot(mtcars2, aes(x = amf, y = mpg)) + geom_boxplot() + ylim(0,35)
 ```
+
+```{r, eval=FALSE}
+# What is the difference?
+ggplot(mtcars2, aes(x = amf, y = mpg)) + geom_boxplot() + coord_cartesian(ylim = c(0,35)) 
+```
+
 
 ## ggplot2 uses the language of graphics 
 
@@ -334,7 +355,7 @@ where:
 
 * $y_{ij}=$ is the $j$th value of `mpg` in the $i$th group of `cyl`
 * $\mu=$ mean of $Y$
-* $\alpha_i = $ effect of the $i$th group of `cyl` on `mpg`
+* \(\alpha_i = \) effect of the $i$th group of `cyl` on `mpg`
 * $\varepsilon=$ the random error due to the $j$th value of `mpg` in the $i$th value of `cyl`
 
 ### Hypotheses
@@ -686,6 +707,91 @@ plot(mod8)
 ```{r}
 summary(mod8)
 ```
+
+## Multiple regression
+
+```{r}
+head(mtcars)
+mtcars5 <- mtcars %>%
+  mutate(
+    cyl = as.factor(cyl),
+    vs = as.factor(vs),
+    am = as.factor(am),
+    gear = as.factor(gear),
+    carb = as.factor(carb)
+  )
+```
+
+## Continuation of Multiple Regression
+
+```{r}
+mod7 <- lm(mpg~., data=mtcars5)
+par(mfrow=c(2,2))
+plot(mod7)
+```
+
+## Step-wise regression
+
+```{r, message=FALSE, warning=FALSE}
+mod8 <- step(mod7, direction="both", trace=FALSE)
+summary(mod8)
+```
+
+## Diagnosic plots of result of step-wise regression
+
+```{r}
+par(mfrow=c(2,2))
+plot(mod8)
+```
+
+## Prediction (for Demonstration Only)
+
+https://stats.stackexchange.com/questions/244017/prediction-vs-inference
+
+* Inference: Given a set of data you want to infer how the output is generated as a function of the data.
+
+* Prediction: Given a new measurement, you want to use an existing data set to build a model that reliably chooses the correct identifier from a set of outcomes.
+
+* Inference: You want to find out what the effect of Age, Passenger Class and, Gender has on surviving the Titanic Disaster. You can put up a logistic regression and infer the effect each passenger characteristic has on survival rates.
+
+* Prediction: Given some information on a Titanic passenger, you want to choose from the set {lives,dies}
+and be correct as often as possible. (See bias-variance tradeoff for prediction in case you wonder how to be correct as often as possible.) 
+
+
+## Let us use `mod5` for prediction
+
+```{r}
+newdata <- data.frame(disp = sample(mtcars$disp,5) + rnorm(5))
+predict(mod5, newdata, interval="prediction")
+```
+
+## For More on Prediction and Machine Learning
+
+* https://www.datacamp.com/community/tutorials/machine-learning-in-r
+* https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
+* https://www.coursera.org/learn/practical-machine-learning
+* https://www.kaggle.com
+* https://www.kdnuggets.com/2017/04/10-free-must-read-books-machine-learning-data-science.html
+
+## Challenge: multiple linear regression
+
+Using the `diamonds` data set, create a model for pricing diamonds based on the other variables.
+
+```{r, echo=TRUE, eval=FALSE}
+?diamonds
+head(diamonds)
+```
+
+
+## [Thank you!](https://stackoverflow.com/questions/8082429/plot-a-heart-in-r)
+
+```{r, eval=FALSE}
+library(ggplot2)
+dat <- data.frame(x=seq(0, 2*pi, length.out=100))
+shape <- function(x)2-2*sin(x) + sin(x)*(sqrt(abs(cos(x))))/(sin(x)+1.4)
+ggplot(dat, aes(x=x)) + stat_function(fun=shape) + coord_polar(start=-pi/2)
+```
+
 
 
 [1]: https://www.datasciencecentral.com/profiles/blogs/list-of-companies-using-r
