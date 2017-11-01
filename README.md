@@ -4,7 +4,9 @@ This is the repository for the presentation slides for the Urdaneta City Univers
 
 You can download or clone this git by [installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and running the following command in your terminal/command line interface:
 
-``` git clone "https://github.com/josephuses/R_UCU_workshop.git"
+```bash 
+git clone "https://github.com/josephuses/R_UCU_workshop.git"
+```
 
 ## LICENSE
 
