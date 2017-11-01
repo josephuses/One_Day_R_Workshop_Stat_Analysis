@@ -413,6 +413,20 @@ pairwise.t.test(mpg, cylf, p.adjust.method = "bonferroni")
 scheffe.test(mod, "cylf", console=TRUE)
 ```
 
+## Non-parametric Kruskal-Wallis Test
+
+```{r}
+kruskal.test(mpg~cyl, data=mtcars)
+```
+
+## Non-parametric Kruskal-Wallis Test
+
+```{r}
+with(mtcars, agricolae::kruskal(mpg, cyl, p.adj="BH", console = TRUE))
+```
+
+
+
 ## Randomized Complete Block Design
 
 Suppose we want to know the effect of the number of cylinders to mpg when we group the observations by type of transmission, which we know has an effect on mpg. That is, we want to isolate the effect of cyl on mpg when we group the observations by am.
@@ -457,6 +471,9 @@ summary(mod2)
 ```{r}
 TukeyHSD(mod2, "cylf")
 ```
+
+
+
 
 ## Two-way ANOVA (Two-factor CBD)
 

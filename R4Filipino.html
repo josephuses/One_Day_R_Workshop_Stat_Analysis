@@ -625,6 +625,50 @@ Means with the same letter are not significantly different.
 6 19.74      b
 8 15.10      c</pre>
 
+</article></slide><slide class=''><hgroup><h2>Non-parametric Kruskal-Wallis Test</h2></hgroup><article  id="non-parametric-kruskal-wallis-test" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>kruskal.test(mpg~cyl, data=mtcars)</pre>
+
+<pre >
+    Kruskal-Wallis rank sum test
+
+data:  mpg by cyl
+Kruskal-Wallis chi-squared = 26, df = 2, p-value = 3e-06</pre>
+
+</article></slide><slide class=''><hgroup><h2>Non-parametric Kruskal-Wallis Test</h2></hgroup><article  id="non-parametric-kruskal-wallis-test-1" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>with(mtcars, agricolae::kruskal(mpg, cyl, p.adj=&quot;BH&quot;, console = TRUE))</pre>
+
+<pre >
+Study: mpg ~ cyl
+Kruskal-Wallis test&#39;s
+Ties or no Ties
+
+Critical Value: 25.75
+Degrees of freedom: 2
+Pvalue Chisq  : 2.566e-06 
+
+cyl,  means of the ranks
+
+     mpg  r
+4 26.955 11
+6 17.429  7
+8  7.821 14
+
+Post Hoc Analysis
+
+P value adjustment method: BH
+t-Student: 2.045
+Alpha    : 0.05
+Groups according to probability of treatment differences and alpha level.
+
+Treatments with the same letter are not significantly different.
+
+     mpg groups
+4 26.955      a
+6 17.429      b
+8  7.821      c</pre>
+
 </article></slide><slide class=''><hgroup><h2>Randomized Complete Block Design</h2></hgroup><article  id="randomized-complete-block-design" class="smaller ">
 
 <p>Suppose we want to know the effect of the number of cylinders to mpg when we group the observations by type of transmission, which we know has an effect on mpg. That is, we want to isolate the effect of cyl on mpg when we group the observations by am.</p>
