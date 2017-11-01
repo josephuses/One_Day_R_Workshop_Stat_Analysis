@@ -9,6 +9,17 @@ You can download or clone this git by [installing Git](https://git-scm.com/book/
 git clone "https://github.com/josephuses/R_UCU_workshop.git"
 ```
 
+## Prerequisites
+
+Download and install R and Rstudio, open your R console, and install the `tidyverse` and `agricolae` packages by copying and pasting the following into your R console:
+
+```r
+if(!require("tidyverse"){install.packages("tidyverse")}
+if(!require("agricolae"){install.packages("agricolae")}
+```
+
+For more information, visit: 
+
 
 ## LICENSE
 
