@@ -10,13 +10,14 @@ output:
     fig_height: 6
   beamer_presentation: 
     latex_engine: xelatex
+bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, comment = "", fig.align = 'center', out.width = 350)
 ```
 
-## [What is R?][2]
+## [What is R?][2] [@rfoundation]
 
 "R is a language and environment for statistical computing and graphics. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
 
@@ -40,7 +41,7 @@ R provides a wide variety of statistical (linear and nonlinear modelling, classi
 * There is in general no one to complain to when something goes wrong
 * R's memory management sucks (?)
 
-## [Who Uses R?][1]
+## [Who Uses R?][1] [@bhalla]
 
 * Facebook - For behavior analysis related to status updates and profile pictures.
 *    Google - For advertising effectiveness and economic forecasting.
@@ -51,7 +52,12 @@ R provides a wide variety of statistical (linear and nonlinear modelling, classi
 *    IBM - Joined R Consortium Group
 *    ANZ - For credit risk modeling
 
+## Why use R?
 
+* It is free (and open source)!
+* R is the most popular tool for analytics/data science [@kdnuggets1].
+* Ranked 5th in most popular software based on number of job offerings: SQL, Python, Java, Hadoop, R, C/C++/C#, SAS, Apache Spark, Tableau, Apache Hive [@muenchen]
+* R has surpassed SAS in scholarly use--but still way behind SPSS [@muenchen2]
 
 
 ## Is "R also for Filipino Researchers"?
@@ -684,3 +690,6 @@ summary(mod8)
 
 [1]: https://www.datasciencecentral.com/profiles/blogs/list-of-companies-using-r
 [2]: https://www.r-project.org/about.html
+
+
+## References
