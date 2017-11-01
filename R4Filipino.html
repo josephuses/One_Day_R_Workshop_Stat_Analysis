@@ -595,6 +595,36 @@ data:  mpg and cylf
 
 P value adjustment method: bonferroni </pre>
 
+</article></slide><slide class=''><hgroup><h2>More on post-hoc analysis (cont&#8230;)</h2></hgroup><article  id="more-on-post-hoc-analysis-cont..." class="smaller ">
+
+<pre class = 'prettyprint lang-r'>scheffe.test(mod, &quot;cylf&quot;, console=TRUE)</pre>
+
+<pre >
+Study: mod ~ &quot;cylf&quot;
+
+Scheffe Test for mpg 
+
+Mean Square Error  : 10.39 
+
+cylf,  means
+
+    mpg   std  r  Min  Max
+4 26.66 4.510 11 21.4 33.9
+6 19.74 1.454  7 17.8 21.4
+8 15.10 2.560 14 10.4 19.2
+
+Alpha: 0.05 ; DF Error: 29 
+Critical Value of F: 3.328 
+
+Groups according to probability of means differences and alpha level( 0.05 )
+
+Means with the same letter are not significantly different.
+
+    mpg groups
+4 26.66      a
+6 19.74      b
+8 15.10      c</pre>
+
 </article></slide><slide class=''><hgroup><h2>Randomized Complete Block Design</h2></hgroup><article  id="randomized-complete-block-design" class="smaller ">
 
 <p>Suppose we want to know the effect of the number of cylinders to mpg when we group the observations by type of transmission, which we know has an effect on mpg. That is, we want to isolate the effect of cyl on mpg when we group the observations by am.</p>

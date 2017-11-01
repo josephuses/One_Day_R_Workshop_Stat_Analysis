@@ -407,6 +407,12 @@ pairwise.t.test(mpg, cylf, p.adjust.method = "bonferroni")
 )
 ```
 
+## More on post-hoc analysis (cont...)
+
+```{r}
+scheffe.test(mod, "cylf", console=TRUE)
+```
+
 ## Randomized Complete Block Design
 
 Suppose we want to know the effect of the number of cylinders to mpg when we group the observations by type of transmission, which we know has an effect on mpg. That is, we want to isolate the effect of cyl on mpg when we group the observations by am.
