@@ -18,7 +18,7 @@ if(!require("tidyverse"){install.packages("tidyverse")}
 if(!require("agricolae"){install.packages("agricolae")}
 ```
 
-For more information, visit: 
+For more information, visit: https://mspcar.neocities.org/R_installation.html
 
 
 ## LICENSE
