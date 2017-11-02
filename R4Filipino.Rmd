@@ -10,6 +10,7 @@ output:
     fig_height: 6
   beamer_presentation: 
     latex_engine: xelatex
+    keep_tex: true
 bibliography: bibliography.bib
 ---
 
@@ -135,7 +136,7 @@ where:
 
 ## A research question: Is there a difference in milleage for automatic and manual cars?
 
-* $H_a: \alpha_1=\alpha_2=0$ (or $\mu_1=\mu_2$) The milleage per gallon differ based on transmission type of the car.
+* \(H_a: \alpha_1=\alpha_2=0\) (or $\mu_1=\mu_2$) The milleage per gallon differ based on transmission type of the car.
 
 * $H_0: \alpha_1\neq\alpha_2$ (or $\mu_1\neq\mu_2$) The milleage per gallon do not differ based on transmission type of the car.
 
@@ -803,6 +804,14 @@ Using the `diamonds` data set, create a model for pricing diamonds based on the 
 ```{r, echo=TRUE, eval=FALSE}
 ?diamonds
 head(diamonds)
+```
+
+## Jump start your self-learning of the R statistical package
+
+```{r, eval=FALSE}
+install.packages("swirl")
+library(swirl)
+swirl()
 ```
 
 
