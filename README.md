@@ -6,7 +6,7 @@ You can download or clone this git by [installing Git](https://git-scm.com/book/
 
 
 ```
-git clone "https://github.com/josephuses/R_UCU_workshop.git"
+git clone "https://github.com/josephuses/One_Day_R_Workshop_Stat_Analysis.git"
 ```
 
 ## Prerequisites
